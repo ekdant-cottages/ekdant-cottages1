@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EKDANT COTTAGES - Your Serene Escape</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f4f4f4 0%, #e8f5e8 100%);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ecf0f1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 2rem;
+        }
+        nav ul li a {
+            color: #ecf0f1;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        /* Hero Section with Enhanced Parallax and Animation */
+        .hero {
+            height: 100vh;
+            background-image: url('beach-aes.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            animation: slideIn 3s ease-out;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.6), rgba(155, 89, 182, 0.6));
+            animation: fadeInOverlay 2s;
+        }
+        .hero-content {
+            z-index: 1;
+            max-width: 600px;
+        }
+        .hero img {
+            max-width: 250px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 2s both;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-size: 4rem; /* Made bigger */
+            font-weight: 900; /* Extra bold */
+            margin-bottom: 1rem;
+            animation: fadeInUp 2s 0.5s both;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8); /* Enhanced shadow for boldness */
+            letter-spacing: 2px; /* Added spacing for emphasis */
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 2s 1s both;
+            font-weight: 300;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            animation: fadeIn 1s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* About Section with Floating Effect */
+        .about {
+            background: linear-gradient(135deg, #d5f4e6 0%, #a8e6cf 100%);
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1200x400?text=Subtle+Pattern') no-repeat center;
+            opacity: 0.1;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .about-text {
+            flex: 1;
+            animation: slideInLeft 1s;
+        }
+        .about-img {
+            flex: 1;
+            height: 300px;
+            background-image: url('home-image.jpg'); /* Replace */
+            background-size: cover;
+            border-radius: 10px;
+            animation: slideInRight 1s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* New Cottages Section - Focused on Your Single Cottage */
+        .cottages {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            position: relative;
+        }
+        .cottages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1200x400?text=Cottage+Pattern') no-repeat center;
+            opacity: 0.05;
+        }
+        .cottages-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .cottage-img {
+            flex: 1;
+            height: 400px;
+            background-image: url('nature.jpg'); /* Replace with your cottage image */
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            animation: slideInLeft 1s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .cottage-details {
+            flex: 1;
+            animation: slideInRight 1s;
+        }
+        .cottage-details h3 {
+            margin-bottom: 1rem;
+            color: #27ae60;
+            font-size: 2rem;
+        }
+        .cottage-details p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .cottage-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+        .cottage-features li {
+            margin-bottom: 0.5rem;
+            color: #e67e22;
+            font-weight: 500;
+        }
+        .cottage-features li::before {
+            content: '✓ ';
+            color: #27ae60;
+        }
+        .cottage-details .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .cottage-details .cta-button:hover {
+            background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%);
+        }
+
+        /* Gallery with Horizontal Scrolling */
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 1rem 0;
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: #f39c12 #f4f4f4; /* For Firefox */
+        }
+        .gallery::-webkit-scrollbar {
+            height: 8px; /* For Webkit browsers */
+        }
+        .gallery::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+        .gallery::-webkit-scrollbar-thumb {
+            background: #f39c12;
+            border-radius: 4px;
+        }
+        .gallery img {
+            flex: 0 0 250px; /* Fixed width for each image */
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s, filter 0.3s;
+            animation: fadeIn 1s;
+            border: 3px solid #f39c12;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        /* Videos Section with Horizontal Scrolling */
+        .video-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: #f39c12 #f4f4f4; /* For Firefox */
+        }
+        .video-gallery::-webkit-scrollbar {
+            height: 8px; /* For Webkit browsers */
+        }
+        .video-gallery::-webkit-scrollbar-track {
+            background: #f4f4f4;
+        }
+        .video-gallery::-webkit-scrollbar-thumb {
+            background: #f39c12;
+            border-radius: 4px;
+        }
+        .video-gallery video {
+            flex: 0 0 300px; /* Fixed width for each video */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: fadeIn 1s;
+        }
+
+        /* Testimonials with Carousel Effect (Simple) */
+        .testimonials {
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 100%);
+            position: relative;
+        }
+        .testimonial {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s;
+        }
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #27ae60;
+        }
+        .testimonial cite {
+            color: #e67e22;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        footer h2 {
+            color: #f39c12;
+        }
+        footer p {
+            color: #ecf0f1;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Add a hamburger menu if needed */
+            }
+            .hero h1 {
+                font-size: 3rem; /* Adjusted for mobile */
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .cottages-content {
+                flex-direction: column;
+            }
+            .about-img {
+                height: 250px;
+                background-size: cover;
+                background-position: center;
+            }
+            .cottage-img {
+                height: 300px;
+                background-size: cover;
+                background-position: center;
+            }
+            .gallery img {
+                flex: 0 0 200px; /* Smaller on mobile */
+            }
+            .video-gallery video {
+                flex: 0 0 250px; /* Smaller on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">EKDANT COTTAGES</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#cottages">Cottages</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="Ekdant logo.png" alt="EKDANT COTTAGES Logo"> <!-- Added image above title -->
+            <h1>EKDANT COTTAGES</h1>
+            <p>Escape to serene cottages amidst Kokan's lush landscapes, pristine beaches, and vibrant culture. Your perfect retreat awaits.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Homestay</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Nestled in the heart of Kokan, our homestay cottages offer a blend of traditional charm and modern comfort. Experience authentic Konkani hospitality, farm-fresh meals, and adventures like beach walks and hill treks. Perfect for families, couples, or solo travelers seeking peace.</p>
+                </div>
+                <div class="about-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Cottages Section - Focused on Your Single Cottage -->
+    <section id="cottages" class="cottages">
+        <div class="container">
+            <h2 class="section-title">Discover Your Cottage</h2>
+            <div class="cottages-content">
+                <div class="cottage-img"></div>
+                <div class="cottage-details">
+                    <h3>EKDANT Cottage: A Serene Escape</h3>
+                    <p>At EKDANT Cottages, our signature cottage is a harmonious blend of rustic elegance and contemporary amenities, designed to provide an unforgettable retreat in the heart of Kokan. Surrounded by lush greenery, pristine beaches, and vibrant local culture, this charming abode offers a perfect sanctuary for relaxation and rejuvenation. Whether you're seeking a romantic getaway, a family vacation, or a solo adventure, our cottage promises an immersive experience in nature's lap.</p>
+                    <p>The cottage features spacious interiors with cozy bedrooms and modern bathrooms with hot water facilities. Step outside to enjoy private balconies overlooking scenic views, or explore the surrounding trails for hiking and birdwatching. Indulge in farm-fresh meals prepared with local ingredients, and let the warm hospitality of our hosts make your stay truly memorable.</p>
+                    <ul class="cottage-features">
+                        <li>Spacious bedrooms with comfortable bedding</li>
+                        <li>In the midst of nature enjoy bornfire</li>
+                        <li>Modern bathrooms with hot water showers</li>
+                        <li>Balconies with scenic views</li>
+                        <li>Access to hiking trails and beach walks</li>
+                        <li>Farm-fresh, homemade meals available</li>
+                        <li>Authentic Konkani hospitality</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Book Your Stay Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="container">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery">
+            <img src="beach-me.jpg" alt="Kokan Beach">
+            <img src="interior.jpg" alt="Cottage Interior">
+            <img src="beach.webp" alt="Hill View">
+            <img src="food.jpg" alt="Local Food">
+            <!-- Added more photos below -->
+            <img src="balcony.jpg" alt="Balcony">
+            <img src="home-2.jpg" alt="Home">
+            <img src="old home.jpg" alt="Old home">
+            <img src="washroom.jpg" alt="Washroom">
+        </div>
+    </section>
+
+    <!-- Added Videos Section at the bottom -->
+    <section id="videos" class="container">
+        <h2 class="section-title">Videos</h2>
+        <div class="video-gallery">
+            <video controls width="100%" height="400">
+                <source src="IMG_5684.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Added two more videos -->
+            <video controls width="100%" height="400">
+                <source src="IMG_5671.MOV.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls width="100%" height="400">
+                <source src="20251031_160110.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Guests Say</h2>
+            <div class="testimonial">
+                <p>"An unforgettable stay! The cottages are cozy, and the views are breathtaking. Highly recommend!"</p>
+                <cite>- Priya, Mumbai</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Perfect for a family getaway. The hosts were warm, and the food was delicious."</p>
+                <cite>- Rajesh, Pune</cite>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Email: ekdantcottages@gmail.com | Phone: +91-9850036583 / 9881495340</p>
+            <p>Location: Diveagar, Kokan, Maharashtra, India</p>
+        </div>
+    </footer>
